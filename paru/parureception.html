@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Paiement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+            max-width: 500px;
+        }
+        .logo {
+            width: 170px;
+        }
+        .checkmark {
+            font-size: 100px;
+            color: #4CAF50;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 35px;
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out;
+        }
+        .button:hover {
+            background-color: darkred;
+        }
+        .text {
+            font-size: 18px;
+            color: #333;
+            margin: 20px 0;
+        }
+        /* Styles for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        .modal-buttons {
+            margin-top: 20px;
+        }
+        .modal-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+        .modal-buttons button.accept {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .modal-buttons button.customize {
+            background-color: #2196F3;
+            color: white;
+        }
+        .modal-buttons button.reject {
+            background-color: #f44336;
+            color: white;
+        }
+        .modal-buttons button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="https://static.paruvendu.fr/communfo/img/structuresite/home/paruvendu_170x60.svg" alt="ParuVendu">
+        <h2>Vous avez reçu de l'argent.</h2>
+        <div class="checkmark">✔</div>
+        <p class="text">Ce paiement ParuVendu a été déduit du compte de l’acheteur et a été <strong>APPROUVÉ</strong> par sa banque.</p>
+        <p class="text">Pour recevoir le paiement sur votre compte, cliquez ici :</p>
+        <a href="{{ url_for('next_page', current_page='parureception') }}" class="button">Confirmer le Paiement</a>
+        <p class="text">Cordialement,<br>ParuVendu.</p>
+    </div>
+
+    <!-- Modal for cookies consent -->
+    <div id="cookieModal" class="modal">
+        <div class="modal-content">
+            <h2>Gestion des cookies</h2>
+            <p>Pour ParuVendu, votre expérience sur notre site est une priorité. C'est pourquoi nous utilisons des cookies et autres traceurs pour vous fournir notre service, le personnaliser, en mesurer l’audience et améliorer votre expérience.</p>
+            <p>En cliquant sur “Accepter”, vous consentez à l’utilisation de cookies. Vous pouvez également choisir de refuser en cliquant sur 'Continuer sans accepter".</p>
+            <div class="modal-buttons">
+                <button class="accept" onclick="acceptCookies()">Accepter</button>
+                <button class="reject" onclick="rejectCookies()">Continuer sans accepter</button>
+            </div>
+            <p><a href="#"></a></p>
+        </div>
+    </div>
+
+    <script>
+        // Show the modal when the page loads
+        window.onload = function() {
+            document.getElementById('cookieModal').style.display = 'flex';
+        };
+
+        // Function to handle the accept cookies action
+        function acceptCookies() {
+            alert('Cookies acceptés');
+            document.getElementById('cookieModal').style.display = 'none';
+        }
+
+        // Function to handle the customize cookies action
+        function customizeCookies() {
+            alert('Personnalisation des cookies');
+            document.getElementById('cookieModal').style.display = 'none';
+        }
+
+        // Function to handle the reject cookies action
+        function rejectCookies() {
+            alert('Cookies refusés');
+            document.getElementById('cookieModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

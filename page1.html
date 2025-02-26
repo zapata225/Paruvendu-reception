@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destockage Alimentaire - Accueil</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Animation pour les éléments */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Alignement des prix */
+        .price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        /* Animation pour le numéro WhatsApp */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .whatsapp-number {
+            animation: pulse 2s infinite;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #25D366;
+        }
+
+        /* Style pour la section mise en avant */
+        .featured-section {
+            background: linear-gradient(135deg, #f3e8ff, #d8b4fe);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-product {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .featured-product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header avec logo de connexion et barre de recherche -->
+    <header class="bg-gray-900 text-white p-4 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828427.png" alt="Connexion" class="w-8 h-8 cursor-pointer">
+            <input type="text" placeholder="Rechercher..." class="px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none">
+        </div>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="#" class="hover:text-yellow-400 font-semibold transition duration-300">Accueil</a></li>
+                <li><a href="#" class="hover:text-yellow-400 font-semibold transition duration-300">A propos</a></li>
+                <li><a href="#" class="hover:text-yellow-400 font-semibold transition duration-300">Produits</a></li>
+                <li><a href="#" class="hover:text-yellow-400 font-semibold transition duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1 : Hero -->
+        <section class="relative">
+            <img src="https://destockagealimentaireprixbas.com/wp-content/uploads/2024/03/iStock-493581606-2048x1365.jpg.webp" alt="Déstockage Alimentaire" class="w-full h-96 object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center p-6">
+                <h1 class="text-6xl font-extrabold drop-shadow-lg animate-fadeInUp">Bienvenue dans notre univers du déstockage</h1>
+                <p class="text-lg mt-4 animate-fadeInUp">Des produits alimentaires de qualité à des prix imbattables!</p>
+                <div class="whatsapp-number animate-fadeInUp">📞 WhatsApp: +33 6 11 81 35 49</div>
+                <a href="#" class="mt-6 bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition duration-300 animate-fadeInUp">Découvrez !</a>
+            </div>
+        </section>
+
+        <!-- Section 2 : Catégories -->
+        <section class="py-16 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 animate-fadeInUp">Découvrez Nos Catégories Alimentaires</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8 px-6">
+                <div class="bg-red-500 text-white shadow-xl p-6 rounded-xl text-xl font-semibold hover-scale">🥖 Alimentaire</div>
+                <div class="bg-green-500 text-white shadow-xl p-6 rounded-xl text-xl font-semibold hover-scale">🐶 Animalerie</div>
+                <div class="bg-blue-500 text-white shadow-xl p-6 rounded-xl text-xl font-semibold hover-scale">🥤 Boissons</div>
+                <div class="bg-purple-500 text-white shadow-xl p-6 rounded-xl text-xl font-semibold hover-scale">🔌 Électroménager</div>
+                <div class="bg-yellow-500 text-white shadow-xl p-6 rounded-xl text-xl font-semibold hover-scale">🥛 Produits Laitiers</div>
+                <div class="bg-pink-500 text-white shadow-xl p-6 rounded-xl text-xl font-semibold hover-scale">🧴 Produits Ménagers</div>
+            </div>
+        </section>
+
+        <!-- Section 3 : Offres pour particuliers -->
+        <section class="text-center py-16">
+            <h2 class="text-4xl font-bold text-gray-900 animate-fadeInUp">Vous êtes un particulier et recherchez des offres de déstockage ?</h2>
+            <p class="text-lg mt-8 animate-fadeInUp">Découvrez nos marques de confiance !</p>
+            <a href="#" class="mt-8 inline-block bg-purple-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-purple-700 transition duration-300 animate-fadeInUp">Voir offres spéciales</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 px-6">
+                <div class="bg-white shadow-lg p-6 rounded-xl hover-scale">
+                    <img src="https://m.media-amazon.com/images/I/51KhxEGtgfL._AC_.jpg" alt="Nutella" class="w-full h-24 object-contain rounded-lg">
+                    <p class="mt-4 text-xl font-semibold">PALETTE DE NUTELLA</p>
+                    <div class="price">
+                        <p class="text-2xl font-bold text-green-600">1350.00 € TTC</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg p-6 rounded-xl hover-scale">
+                    <img src="https://staffpizza.fr/themes/bwaV2/assets/img/staff_pizza/bg/main_bg.jpg" alt="Coca Cola" class="w-full h-24 object-contain rounded-lg">
+                    <p class="mt-4 text-xl font-semibold">PALETTE COCA COLA</p>
+                    <div class="price">
+                        <p class="text-2xl font-bold text-green-600">648.00 € TTC</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg p-6 rounded-xl hover-scale">
+                    <img src="https://m.media-amazon.com/images/G/08/apparel/rcxgs/tile._CB483369919_.gif" alt="Moet" class="w-full h-24 object-contain rounded-lg">
+                    <p class="mt-4 text-xl font-semibold">MOET</p>
+                    <div class="price">
+                        <p class="text-2xl font-bold text-green-600">1120.00 € TTC</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg p-6 rounded-xl hover-scale">
+                    <img src="https://static1.chronodrive.com/img/PM/Z/0/16/0Z_4716.jpg" alt="Lactel Bio" class="w-full h-24 object-contain rounded-lg">
+                    <p class="mt-4 text-xl font-semibold">PALETTE Lactel bio</p>
+                    <div class="price">
+                        <p class="text-2xl font-bold text-green-600">1406.00 € TTC</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="mt-8 inline-block bg-green-500 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-600 transition duration-300 animate-fadeInUp">Acheter maintenant</a>
+        </section>
+
+        <!-- Section 4 : Contenu ajouté - Version stylisée -->
+        <section class="py-16 px-6 bg-gradient-to-r from-purple-600 to-blue-600">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <!-- Titre avec animation -->
+                <h2 class="text-4xl font-bold mb-8 animate-fadeInUp">
+                    Votre fournisseur alimentaire vous présente une variété d’offres à disposition, que vous soyez un particulier ou un professionnel.
+                </h2>
+
+                <!-- Texte descriptif avec ombre et animation -->
+                <p class="text-lg mb-6 drop-shadow-lg animate-fadeInUp">
+                    Ne manquez pas l’opportunité de vous abonner à notre newsletter pour bénéficier d’un accès complet à toutes nos offres. Vous recevrez ainsi chaque jour les dernières nouveautés avant leur mise en ligne.
+                </p>
+
+                <!-- Encadré pour la mention TVA -->
+                <div class="inline-block bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-6 py-3 mb-8 animate-fadeInUp">
+                    <p class="text-lg font-semibold">Tous les prix indiqués incluent la TVA.</p>
+                </div>
+
+                <!-- Bouton avec effet hover et animation -->
+                <a href="#" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 hover:text-purple-700 transition duration-300 animate-fadeInUp">
+                    Voir offres spéciales
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 5 : Produits en déstockage -->
+        <section class="py-16 px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 text-center mb-8 animate-fadeInUp">Nos Produits en Déstockage</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Produit 1 : Coca Cola -->
+                    <div class="featured-product animate-fadeInUp">
+                        <img src="https://staffpizza.fr/themes/bwaV2/assets/img/staff_pizza/bg/main_bg.jpg" alt="Coca Cola" class="w-full h-32 object-contain rounded-lg">
+                        <p class="mt-4 text-xl font-semibold text-center">Coca Cola</p>
+                        <p class="text-gray-600 text-center">PALETTE DE COCA COLA 33CL – Vente pour particulier et semi-grossiste.</p>
+                        <div class="price">
+                            <p class="text-2xl font-bold text-green-600">648.00 € TTC</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 2 : Red Bull -->
+                    <div class="featured-product animate-fadeInUp">
+                        <img src="https://m.media-amazon.com/images/I/51KhxEGtgfL._AC_.jpg" alt="Red Bull" class="w-full h-32 object-contain rounded-lg">
+                        <p class="mt-4 text-xl font-semibold text-center">Red Bull</p>
+                        <p class="text-gray-600 text-center">PALETTE RED BULL 250ML – Grossiste de Red Bull 250ml.</p>
+                        <div class="price">
+                            <p class="text-2xl font-bold text-green-600">1,244.16 € TTC</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 3 : Nutella -->
+                    <div class="featured-product animate-fadeInUp">
+                        <img src="https://static1.chronodrive.com/img/PM/Z/0/16/0Z_4716.jpg" alt="Nutella" class="w-full h-32 object-contain rounded-lg">
+                        <p class="mt-4 text-xl font-semibold text-center">Nutella</p>
+                        <p class="text-gray-600 text-center">PALETTE DE 168 POTS DE NUTELLA 750G – Nutella 750g en gros.</p>
+                        <div class="price">
+                            <p class="text-2xl font-bold text-green-600">1350.00 € TTC</p>
+                        </div>
+                    </div>
+
+                    <!-- Produit 4 : Eau Cristalline -->
+                    <div class="featured-product animate-fadeInUp">
+                        <img src="https://m.media-amazon.com/images/G/08/apparel/rcxgs/tile._CB483369919_.gif" alt="Eau Cristalline" class="w-full h-32 object-contain rounded-lg">
+                        <p class="mt-4 text-xl font-semibold text-center">Eau Cristalline</p>
+                        <p class="text-gray-600 text-center">Palette eau Cristalline 126 * 6 bouteilles-1L Cristaline – IDEAL Chantiers BTP.</p>
+                        <div class="price">
+                            <p class="text-2xl font-bold text-green-600">310.00 € TTC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6 : Pourquoi Choisir Notre Déstockage Alimentaire ? (Version Ultra-Moderne) -->
+        <section class="py-16 bg-gradient-to-r from-purple-600 to-blue-600">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-white text-center mb-12 animate-fadeInUp">
+                    Pourquoi Choisir Notre Déstockage Alimentaire ?
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Carte 1 : Opportunité économique -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 hover:bg-opacity-20 transition duration-300 animate-fadeInUp">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-white mt-6">Opportunité Économique</h3>
+                            <p class="text-lg text-gray-200 mt-4">
+                                Dans un contexte de hausse des prix, trouver des produits de qualité à des tarifs réduits est une opportunité à saisir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Carte 2 : Sélection Variée -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 hover:bg-opacity-20 transition duration-300 animate-fadeInUp">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-white mt-6">Sélection Variée</h3>
+                            <p class="text-lg text-gray-200 mt-4">
+                                Nous proposons une sélection variée de produits de qualité à des prix avantageux, tout en luttant contre le gaspillage alimentaire.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Carte 3 : Provenance des Produits -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 hover:bg-opacity-20 transition duration-300 animate-fadeInUp">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-white mt-6">Provenance des Produits</h3>
+                            <p class="text-lg text-gray-200 mt-4">
+                                Nos produits proviennent de surplus, directement des producteurs, grandes surfaces ou de ventes aux enchères.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Texte supplémentaire -->
+                <div class="max-w-4xl mx-auto text-center mt-12">
+                    <p class="text-lg text-gray-200 animate-fadeInUp">
+                        Dans la plupart des cas, les articles proposés ont une date limite de consommation inférieure à un an.
+                    </p>
+                    <a href="#" class="mt-8 inline-block bg-white text-purple-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 hover:text-purple-700 transition duration-300 animate-fadeInUp">
+                        Voir offres spéciales
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7 : Footer -->
+        <footer class="bg-gray-900 text-white text-center py-6 mt-10">
+            <div class="flex justify-center items-center space-x-4">
+                <img src="https://destockagealimentaireprixbas.com/wp-content/uploads/2024/04/Destockage-Alimentaire-2.gif" alt="Logo Destockage Alimentaire Prix Bas" class="w-24 h-auto">
+                <p class="text-lg animate-fadeInUp">Destock Alim Import - Depuis 2019 | Livraison en France et Europe</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

